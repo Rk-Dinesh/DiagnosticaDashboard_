@@ -1360,4 +1360,135 @@ const UpdateDoctor = () => {
   );
 };
 
-export default UpdateDoctor;
+
+
+
+{/* <form onSubmit={this.handleSubmit}>
+<div className="otpContainer">
+  <input
+    name="otp1"
+    type="text"
+    autoComplete="off"
+    className="otpInput"
+    value={this.state.otp1}
+    onChange={e => this.handleChange("otp1", e)}
+    tabIndex="1" maxLength="1" onKeyUp={e => this.inputfocus(e)}
+  />
+   <input
+    name="otp2"
+    type="text"
+    autoComplete="off"
+    className="otpInput"
+    value={this.state.otp2}
+    onChange={e => this.handleChange("otp2", e)}
+    tabIndex="2" maxLength="1" onKeyUp={e => this.inputfocus(e)}
+
+  />
+  <input
+    name="otp3"
+    type="text"
+    autoComplete="off"
+    className="otpInput"
+    value={this.state.otp3}
+    onChange={e => this.handleChange("otp3", e)}
+    tabIndex="3" maxLength="1" onKeyUp={e => this.inputfocus(e)}
+
+  />
+  <input
+    name="otp4"
+    type="text"
+    autoComplete="off"
+    className="otpInput"
+    value={this.state.otp4}
+    onChange={e => this.handleChange("otp4", e)}
+    tabIndex="4" maxLength="1" onKeyUp={e => this.inputfocus(e)}
+  />
+</div>
+<Button className="primary" type="submit">
+  Submit
+</Button>
+</form> */}
+
+{/* <div className="col-span-6">
+<Card>
+  <div className="bg-transparent">
+    <form className="space-y-3" onSubmit={onUpdate}>
+      <div>
+        {/* <div className="form-group">
+        <label htmlFor="password" className=" col-sm-2 col-form-label"><b>New Password*</b></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          className="form-control py-2"
+          placeholder="Password"
+          value={(userData.password || "").substring(0, 5)}
+          onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password" className=" col-sm-2 col-form-label"><b>Confirm Password*</b></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          className="form-control py-2"
+          placeholder="Password"
+          value={''}
+          onChange={''}
+        />
+      </div> */}
+//         <div className="form-group">
+//           <label
+//             htmlFor="newPassword"
+//             className=" col-form-label py-2"
+//           >
+//             <b>
+//               New Password<span style={{ color: "red" }}>*</span>
+//             </b>
+//           </label>
+//           <input
+//             type="password"
+//             name="newPassword"
+//             id="newPassword"
+//             className="form-control py-2"
+//             placeholder="New Password"
+//             value={newPassword}
+//             onChange={(e) => setNewPassword(e.target.value)}
+//           />
+//         </div>
+//         <div className="form-group">
+//           <label
+//             htmlFor="confirmPassword"
+//             className=" col-form-label py-2"
+//           >
+//             <b>
+//               Confirm Password{" "}
+//               <span style={{ color: "red" }}>*</span>
+//             </b>
+//           </label>
+//           <input
+//             type="password"
+//             name="confirmPassword"
+//             id="confirmPassword"
+//             className="form-control py-2"
+//             placeholder="Confirm Password"
+//             value={confirmPassword}
+//             onChange={(e) => setConfirmPassword(e.target.value)}
+//           />
+//         </div>
+
+//         <br />
+//         <div className="ltr:text-right rtl:text-left">
+//           <button
+//             className="btn btn-dark text-center"
+//             type="submit"
+//           >
+//             Change Password
+//           </button>
+//         </div>
+//       </div>
+//     </form>
+//   </div>
+// </Card>
+// </div> */}

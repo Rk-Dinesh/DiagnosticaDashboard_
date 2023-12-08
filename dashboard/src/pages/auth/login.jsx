@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {jwtDecode} from 'jwt-decode';
@@ -91,10 +91,10 @@ function Login({ setToken }) {
                                         </button>
                                     </div>
                                 </form>
-                                {/* <p className="small fw-bold mt-2 pt-1 mb-0">
-                                    Don't have an account?
-                                    <Link to="/register" className="link-danger">Register</Link>
-                                </p> */}
+                                <p className="small fw-bold mt-2 pt-1 mb-0">
+                                    
+                                    <Link to="/forgotpassword" className="link-danger">Forgot Password ?</Link>
+                                </p>
                             </div>
                         </div>
                     </div>

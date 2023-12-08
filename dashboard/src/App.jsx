@@ -22,6 +22,9 @@ import Page5 from "./pages/components/Page5";
 import Page6 from "./pages/components/Page6";
 import Page7 from "./pages/components/Page7";
 import UserProfile from "./components/partials/header/Tools/UserProfile";
+import FogotPassword from "./pages/auth/forgotpassword";
+import OtpVerify from "./pages/auth/otpverification";
+import ResetPassword from "./pages/auth/changepassword";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -31,6 +34,9 @@ function App() {
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="" element={<Login setToken={setToken} />} />
+        <Route path="/forgotpassword" element={<FogotPassword />} />
+        <Route path="/otpverify" element={<OtpVerify />} />
+        <Route path="/resetpassword" element={<ResetPassword/>} />
         <Route path="/*" element={token ? <Layout token={token}/> : <Navigate to='/' />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="patient" element={<Patient />} />
