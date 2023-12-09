@@ -71,7 +71,7 @@ function Diagnostica() {
       {showButton && (
         <div>
 
-          <button type="button" className="btn btn-success" onClick={openNewTab}>
+          <button type="button" className="btn btn-primary" onClick={openNewTab}>
             DIAGNOSTICA
           </button>
           <br />
@@ -104,20 +104,29 @@ function Diagnostica() {
               <div className='col-span-6'>
                 <p style={stepStyles} className='mb-2'>STEP 2 :</p>
 
-                <div className='flex justify-around'>
+                <div className='flex justify-between'>
+
                 <div>
-                <div className='flex'><p style={flexContainerStyles1}>A</p><p style={flexContainerStyles}>: Acute(A)</p></div>
-                <div className='flex'><p style={flexContainerStyles1}>C</p><p style={flexContainerStyles}>: Chronic (C)</p></div>
+                <p style={{fontWeight : 'bold', fontSize : '12px'}}>Acquired (Acq)</p>
                 <div className='flex'><p style={flexContainerStyles1}>T</p><p style={flexContainerStyles}>: Traumatic (T)</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>I</p><p style={flexContainerStyles}>: Infective (I)</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>M/E</p><p style={flexContainerStyles}>: Metabolic/Endocrine</p></div>
-                </div>
-                <div>
                 <div className='flex'><p style={flexContainerStyles1}>F</p><p style={flexContainerStyles}>: Inflammatory (F)</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>D</p><p style={flexContainerStyles}>: Degenerative (D)</p></div>
-                <div className='flex'><p style={flexContainerStyles1}>G</p><p style={flexContainerStyles}>: Iatrogenic (G)</p></div>
-                <div className='flex'><p style={flexContainerStyles1}>P</p><p style={flexContainerStyles}>: Idiopathic (P)</p></div>
                 </div>
+
+                <div>
+                  <div className='flex'><p style={flexContainerStyles1}>G</p><p style={flexContainerStyles}>: Iatrogenic (G)</p></div>
+                 <div className='flex'><p style={flexContainerStyles1}>P</p><p style={flexContainerStyles}>: Idiopathic (P)</p></div>
+                  <div className='flex'><p style={flexContainerStyles1}>A</p><p style={flexContainerStyles}>: Acute(A)</p></div>
+                  <div className='flex'><p style={flexContainerStyles1}>C</p><p style={flexContainerStyles}>: Chronic (C)</p></div>
+                </div>
+
+                <div>
+                <p style={{fontWeight : 'bold', fontSize : '12px'}}>Congential (Con)</p>
+                <div className='flex'><p style={flexContainerStyles1}>C</p><p style={flexContainerStyles}>: Chronic (C)</p></div>
+                </div>
+
                 </div>
 
               </div>
@@ -131,21 +140,101 @@ function Diagnostica() {
               </div>
             </div>
 
-            <div>
-              <div className='rid grid-cols-12 gap-6 mb-6'>
-                <p style={stepStyles} className='mb-2'>STEP : 4</p>
-                <div className='flex gap-5'>
-                  <img src={MobileLogo} alt="hello" style={{ width: 200, height: 200 }} />
-                  <img src={Image2} alt="hello" style={{ width: 200, height: 200 }} />
-                  <img src={Image3} alt="hello" style={{ width: 200, height: 200 }} />
-                  <img src={Image4} alt="hello" style={{ width: 200, height: 200 }} />
-                  <img src={Image5} alt="hello" style={{ width: 200, height: 200 }} />
-                </div>
+            <div className='py-4'>
+              <p style={stepStyles} >STEP : 4.1 Forefoot</p>
+              <div className='grid grid-cols-12 gap-6 py-2'>
+
+                <div className='col-span-3'>
+                  <p style={ScoreStyles} className='mb-1'>1 Bone  </p>
+                  </div>
+
+                <div className='col-span-3'>
+                  <p style={ScoreStyles} className='mb-1'> 1 Ligament</p>
+                 </div>
+
+                <div className='col-span-3'>
+                  <p style={ScoreStyles} className='mb-1'>1 Tendon</p>
+                 </div>
+
+                <div className='col-span-3'>
+                  <p style={ScoreStyles} className='mb-1'>1 Nerve</p>
+                  </div>
+
               </div>
+              <p style={stepStyles} >STEP : 4.2 Midfoot</p>
+              <div className='grid grid-cols-12 gap-6 py-2'>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>2 Bone  </p>
+  </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'> 2 Ligament</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>2 Tendon</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>2 Nerve</p>
+  </div>
+
+</div>
+<p style={stepStyles} >STEP : 4.3 Hindfoot</p>
+<div className='grid grid-cols-12 gap-6 py-2'>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>3 Bone  </p>
+  </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'> 3 Ligament</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>3 Tendon</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>3 Nerve</p>
+  </div>
+
+</div>
+<p style={stepStyles} >STEP : 4.4 Ankle</p>
+<div className='grid grid-cols-12 gap-6 py-2'>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>4 Bone  </p>
+  </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'> 4 Ligament</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>4 Tendon</p>
+ </div>
+
+<div className='col-span-3'>
+  <p style={ScoreStyles} className='mb-1'>4 Nerve</p>
+  </div>
+
+</div>
+
             </div>
 
 
             <div className='grid grid-cols-12 gap-6 py-4'>
+
+            <div className='col-span-3'>
+                <p style={stepStyles} className='mb-2'>Skin:</p>
+                <p style={flexContainerStyles}>(Skin : 5)-Skin</p>
+                <p style={flexContainerStyles}>(Fat : 5)-Fat </p>
+                <p style={flexContainerStyles}>(Fascia : 5)-Fascia</p>
+               
+              </div>
+              
               <div className='col-span-3'>
                 <p style={stepStyles} className='mb-2'>STEP 5 :</p>
                 <div className='flex'><p style={flexContainerStyles1}>1 </p><p style={flexContainerStyles}>: 1-Forefoot</p></div>
@@ -153,54 +242,122 @@ function Diagnostica() {
                 <div className='flex'><p style={flexContainerStyles1}>3 </p><p style={flexContainerStyles}>: 3-Hindfoot</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>4 </p><p style={flexContainerStyles}>: 4-Ankle</p></div>
               </div>
+              </div>
 
-              <div className='col-span-8'>
+              <div className='grid grid-cols-12 gap-6 py-4'>
+              <div className='col-span-12'>
                 <p style={stepStyles} className='mb-2'>STEP : 6 & 7</p>
-
                 <div className='flex justify-between'>
                   <div >
-                    <p style={flexContainerStyles}>A-Fracture</p>
-                    <p style={flexContainerStyles}>B-Stress Response</p>
-                    <p style={flexContainerStyles}>C-Dislocation</p>
-                    <p style={flexContainerStyles}>D-Subluxation</p>
-                    <p style={flexContainerStyles}>E-Partial Tear</p>
-                    <p style={flexContainerStyles}>F-Complete Tear</p>
+                  <p style={stepStyles} className='mb-2'>Fracture :</p>
+                    <p style={flexContainerStyles}>(C : F)-Closed</p>
+                    <p style={flexContainerStyles}>(O : F)-Open</p>
+                    <p style={flexContainerStyles}>(NU : F)-Non Union</p>
+                    <p style={flexContainerStyles}>(St : F)-Stress</p>
+                    <p style={flexContainerStyles}>(F/D : F)-Fracture/Dislocation</p>
+                    <p style={flexContainerStyles}>(Avu : F)-Avulsion</p>
+                    <p style={flexContainerStyles}>(P : F)-Pathological</p>
                   </div>
 
                   <div>
-                    <p style={flexContainerStyles}>G-Tendinopathy</p>
-                    <p style={flexContainerStyles}>H-Osteoarthritis</p>
-                    <p style={flexContainerStyles}>I-Inflammatory Arthiritis</p>
-                    <p style={flexContainerStyles}>J-Infection</p>
-                    <p style={flexContainerStyles}>K-Coalition</p>
-                    <p style={flexContainerStyles}>L-Congenital Abnormality</p>
-                  </div>
+                  <p style={stepStyles} className='mb-2'>Ligament :</p>
+                    <p style={flexContainerStyles}>(S : L)-Sprain</p>
+                    <p style={flexContainerStyles}>(T : L)-Sprain</p>
+                   </div>
 
-                  <div>
-                    <p style={flexContainerStyles}>M-Amputation</p>
-                    <p style={flexContainerStyles}>N-Deformity</p>
-                    <p style={flexContainerStyles}>O-Maligant Tumor</p>
-                    <p style={flexContainerStyles}>P-Benign Tumor</p>
-                    <p style={flexContainerStyles}>Q-Ingrowing toenail</p>
-                    <p style={flexContainerStyles}>R-Neuroma</p>
-                  </div>
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Tedinopathy :</p>
+                    <p style={flexContainerStyles}>(Tr : T)-Traumatic</p>
+                    <p style={flexContainerStyles}>(De : T)-Degenerative</p>
+                    <p style={flexContainerStyles}>(In : T)-Inflammatory</p>
+                   </div>
 
-                  <div>
-                    <p style={flexContainerStyles}>S-Neuritis</p>
-                    <p style={flexContainerStyles}>T-Charcot</p>
-                    <p style={flexContainerStyles}>U-Ulcer</p>
-                  </div>
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Osteoarthiritis :</p>
+                    <p style={flexContainerStyles}>(De : OA)-Degenerative</p>
+                    <p style={flexContainerStyles}>(PT : OA)-Posttraumatic</p>
+                   </div>
 
-                  <div>
-                    <p style={flexContainerStyles}>1-Closed</p>
-                    <p style={flexContainerStyles}>2-Open</p>
-                    <p style={flexContainerStyles}>3-Comminuted</p>
-                    <p style={flexContainerStyles}>4-spiral</p>
-                    <p style={flexContainerStyles}>5-Oblique</p>
-                    <p style={flexContainerStyles}>6-Transverse</p>
-                  </div>
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Inflammatoryarthiritis :</p>
+                    <p style={flexContainerStyles}>(Rhe : IA)-Rheumatoid</p>
+                    <p style={flexContainerStyles}>(Pso: IA)-Posriatic</p>
+                    <p style={flexContainerStyles}>(Ser: IA)-Seronegative</p>
+                    <p style={flexContainerStyles}>(Re: IA)-Reactive</p>
+                    <p style={flexContainerStyles}>(S/A: IA)-Septic Arthiritis</p>
+                    <p style={flexContainerStyles}>(C/A: IA)-Crystaline arthropathy</p>
+                   </div>
+
+                   
                 </div>
+              </div>
+            </div>
 
+            <div className='grid grid-cols-12 gap-6 py-4'>
+              <div className='col-span-12'>
+               
+                <div className='flex justify-between'>
+               
+
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Misc :</p>
+                    <p style={flexContainerStyles}>(Fb: M)-Foregin bony</p>
+                    <p style={flexContainerStyles}>(IGTN: M)-IGTN</p>
+                    <p style={flexContainerStyles}>(Cal: M)-Callus</p>
+                    <p style={flexContainerStyles}>(Co: M)-Corn</p>
+                    <p style={flexContainerStyles}>(Wt: M)-Wart</p>
+                    
+                   </div>
+
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Joint :</p>
+                    <p style={flexContainerStyles}>(ImST: J)-Impingement soft tissue</p>
+                    <p style={flexContainerStyles}>(ImB: J)-Impingment bone</p>
+                    <p style={flexContainerStyles}>(OCD: J)-OCD</p>
+                    <p style={flexContainerStyles}>(H: J)-Hammer</p>
+                    <p style={flexContainerStyles}>(M: J)-Mallet</p>
+                    <p style={flexContainerStyles}>(Cl: J)-Claw</p>
+                    <p style={flexContainerStyles}>(Vr: J)-Varus</p>
+                    <p style={flexContainerStyles}>(M: J)-Valgus</p>
+                    <p style={flexContainerStyles}>(c_f: J)-Coalition-fibrosis</p>
+                    <p style={flexContainerStyles}>(c_b: J)-Coalition_bone</p>
+                   </div>
+
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Soft Tissue :</p>
+                    <p style={flexContainerStyles}>(Li : Stl)-Lipoma</p>
+                    <p style={flexContainerStyles}>(Fb : Stl)-Fibroma</p>
+                    <p style={flexContainerStyles}>(Gg : Stl)-Ganglion</p>
+                    <p style={flexContainerStyles}>(U : Stl)-Ulcer</p>
+                    <p style={flexContainerStyles}>(Ne : Stl)-Neuroma</p>
+                    <p style={flexContainerStyles}>(P_f : Stl)-Perineural fibroma</p>
+                    <p style={flexContainerStyles}>(Sr : Stl)-Sarcoma</p>
+                    <p style={flexContainerStyles}>(S/A : Stl)-Septic Arthiritis</p>
+                   </div>
+
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Bonelesion :</p>
+                    <p style={flexContainerStyles}>(Om : Bl)-Osteomyelitis</p>
+                    <p style={flexContainerStyles}>(Os: Bl)-Osteosarcoma</p>
+                    <p style={flexContainerStyles}>(GCT: Bl)-GCT</p>
+                    <p style={flexContainerStyles}>(Oo : Bl)-Osteoid osteoma</p>
+                    <p style={flexContainerStyles}>(En: Bl)-Enchondroma</p>
+                    <p style={flexContainerStyles}>(Me: Bl)-Metastasis</p>
+                    <p style={flexContainerStyles}>(BC: Bl)-Bone Cyst</p>
+                    <p style={flexContainerStyles}>(OCD: Bl)-OCD</p>
+                    <p style={flexContainerStyles}>(St Re: Bl)-Stress Response</p>
+                    <p style={flexContainerStyles}>(TmO: Bl)-Transient marrow Oedema</p>
+                    <p style={flexContainerStyles}>(AVN: Bl)-AVN</p>
+                   </div>
+
+                   <div>
+                  <p style={stepStyles} className='mb-2'>Neurological :</p>
+                    <p style={flexContainerStyles}>(Ca : N)-Charcot arthropathy</p>
+                    <p style={flexContainerStyles}>(Rd : N)-Radiculopathy</p>
+                    <p style={flexContainerStyles}>(CRPS: Bl)-CRPS</p>
+                   </div>
+
+                </div>
               </div>
             </div>
 

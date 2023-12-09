@@ -30,7 +30,7 @@ const GroupChart1 = () => {
 
   return (
     <>
-      <div className={`py-[18px] px-4 rounded-[6px] bg-[#FEE4DA] dark:bg-slate-900 `}>
+      <div className={`py-[18px] px-4 rounded-[6px] bg-[#B4C2FD] dark:bg-slate-900 `}>
         <div className="flex items-center space-x-6 rtl:space-x-reverse">
           <div className="flex-1">
             <div className="text-slate-800 dark:text-slate-300 text-sm mb-1 font-medium">
@@ -42,7 +42,7 @@ const GroupChart1 = () => {
           </div>
         </div>
       </div>
-      <div className={`py-[18px] px-4 rounded-[6px] bg-[#E7FDF1] dark:bg-slate-900 `}>
+      <div className={`py-[18px] px-4 rounded-[6px] bg-[#D1DAFE] dark:bg-slate-900 `}>
         <div className="flex items-center space-x-6 rtl:space-x-reverse">
           <div className="flex-1">
             <div className="text-slate-800 dark:text-slate-300 text-sm mb-1 font-medium">

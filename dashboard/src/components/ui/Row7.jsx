@@ -35,9 +35,9 @@ const Row7 = ({ data, className = "space-y-5" }) => {
                     >
                         <div className="px-8 py-4">
                             <div style={{ display: 'flex' }}>
-                                <p style={{ width: '200px', fontWeight: 'bold', fontSize: '16px' }}>Arthritis </p>
+                                <p style={{ width: '180px', fontWeight: 'bold', fontSize: '16px' }}>Arthritis </p>
                                 <p style={{ width: '15px', marginRight: '10px' }}>:</p>
-                                <p style={{ width: '150px', fontWeight: 'bold' }}>Osteoarthritis </p>
+                                <p style={{ width: '120px', fontWeight: 'bold' }}>Osteoarthritis </p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.Osteoarthritis}</p>
                                 <p style={{ width: '150px', fontWeight: 'bold' }}>Rheumatoid Arthritis</p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.Rheumatoid_Arthritis}</p>
@@ -46,16 +46,16 @@ const Row7 = ({ data, className = "space-y-5" }) => {
                             <br />
 
                             <div style={{ display: 'flex' }}>
-                                <p style={{ width: '200px', fontWeight: 'bold', fontSize: '16px' }}>Epilepsy</p>
+                                <p style={{ width: '185px', fontWeight: 'bold', fontSize: '16px' }}>Epilepsy</p>
                                 <p style={{ width: '600px', marginRight: '10px' }}>: {rowData.Tmedi}</p>
                             </div>
 
                             <br />
 
                             <div style={{ display: 'flex' }}>
-                                <p style={{ width: '200px', fontWeight: 'bold', fontSize: '16px' }}>Thyroid Conditions </p>
+                                <p style={{ width: '179px', fontWeight: 'bold', fontSize: '16px' }}>Thyroid Conditions </p>
                                 <p style={{ width: '15px', marginRight: '10px' }}>:</p>
-                                <p style={{ width: '150px', fontWeight: 'bold' }}>Hyper-active  </p>
+                                <p style={{ width: '120px', fontWeight: 'bold' }}>Hyper-active  </p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.Hyper_active}</p>
                                 <p style={{ width: '150px', fontWeight: 'bold' }}>Hypo-active</p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.Hypo_active}</p>
@@ -64,17 +64,18 @@ const Row7 = ({ data, className = "space-y-5" }) => {
                             <br />
 
                             <div style={{ display: 'flex' }}>
-                                <p style={{ width: '200px', fontWeight: 'bold', fontSize: '16px' }}>Cardiac Problems </p>
+                                <p style={{ width: '180px', fontWeight: 'bold', fontSize: '16px' }}>Cardiac Problems </p>
                                 <p style={{ width: '15px', marginRight: '10px' }}>:</p>
-                                <p style={{ width: '150px', fontWeight: 'bold' }}>Heart Attack  </p>
+                                <p style={{ width: '120px', fontWeight: 'bold' }}>Heart Attack  </p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.Heart_Attack}</p>
                                 <p style={{ width: '150px', fontWeight: 'bold' }}>High Blood Pressure </p>
                                 <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.HBP}</p>
-                                <p style={{ width: '150px', fontWeight: 'bold' }}>Low Blood Pressure </p>
-                                <p style={{ width: '50px', marginRight: '10px' }}>: {rowData.LBP}</p>
+                                
                             </div>
                             <div style={{ display: 'flex' }}>
-                                <p style={{ width: '150px', fontWeight: 'bold', marginLeft: '225px' }}>Other </p>
+                                <p style={{ width: '210px', fontWeight: 'bold', marginLeft: '205px'  }}>Low Blood Pressure </p>
+                                <p style={{ width: '90px', marginRight: '10px' }}>: {rowData.LBP}</p>
+                                <p style={{ width: '140px', fontWeight: 'bold'}}>Other </p>
                                 <p style={{ width: '500px', marginRight: '10px' }}>: {rowData.other}</p>
                             </div>
 

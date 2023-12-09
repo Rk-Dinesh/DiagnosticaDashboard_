@@ -53,10 +53,10 @@ const Viewpage = () => {
                 </h4>
             </div>
             <div className="grid grid-cols-12 gap-6 mb-6">
-                <div className="2xl:col-span-9 lg:col-span-8 col-span-12">
+                <div className="2xl:col-span-12 lg:col-span-12 col-span-12">
                     <div className=" bg-transparent">
                         <Tab.Group>
-                            <Tab.List className="lg:space-x-6 md:space-x-3 space-x-0 rtl:space-x-reverse">
+                            <Tab.List className="lg:space-x-6 md:space-x-6 space-x-0 rtl:space-x-reverse">
                                 {buttons.map((item, i) => (
                                     <Tab as={Fragment} key={i}>
                                         {({ selected }) => (
@@ -64,7 +64,7 @@ const Viewpage = () => {
                                                 className={` text-sm font-medium mb-7 last:mb-0 capitalize ring-0 foucs:ring-0 focus:outline-none px-6 rounded-md py-2 transition duration-150
       
       ${selected
-                                                        ? "text-white bg-success-600 "
+                                                        ? "text-white bg-primary-600 "
                                                         : "text-slate-500 bg-white dark:bg-slate-700 dark:text-slate-300"
                                                     }
       `}

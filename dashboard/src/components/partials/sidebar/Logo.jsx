@@ -4,6 +4,7 @@ import useDarkMode from "../../../hooks/useDarkMode";
 import useSidebar from "../../../hooks/useSidebar";
 import useSemiDark from "../../../hooks/useSemiDark";
 import useSkin from "../../../hooks/useSkin";
+import MobileLogo from "../../../assets/logo1.png";
 
 
 
@@ -26,11 +27,18 @@ const SidebarLogo = ({ menuHover }) => {
     >
       <Link to="/dashboard">
         <div className="flex items-center space-x-4">
+        <div className="logo-icon">
+            {!isDark && !isSemiDark ? (
+              <img src={MobileLogo} alt="" style={{height: '40px', width : '40px'}}/>
+            ) : (
+              <img src={MobileLogo} alt="" />
+            )}
+          </div>
 
           {(!collapsed || menuHover) && (
             <div>
-              <p className="text-dark-600">
-                <b>Tutor Finder </b>
+              <p className="text-primary-600">
+                <b>Diagnostica </b>
               </p>
             </div>
           )}

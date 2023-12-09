@@ -138,8 +138,8 @@ const DoctorTable = () => {
         <thead className="bg-slate-200 dark:bg-slate-700">
           <tr>
             <th className=" table-th " >#</th>
-            <th className=" table-th " >FIRST NAME</th>
-            <th className=" table-th " >LAST NAME</th>
+            <th className=" table-th " > NAME</th>
+           
             <th className=" table-th " >EMAIL</th>
             <th className=" table-th " >PHONE</th>
             <th className=" table-th " >ACTION</th>
@@ -151,8 +151,8 @@ const DoctorTable = () => {
             return (
               <tr {...row.getRowProps()} key={row.original.idcode}>
                 <td className="table-td">{row.original.rowIndex}</td>
-                <td className="table-td">{row.original.firstname}</td>
-                <td className="table-td">{row.original.lastname}</td>
+                <td className="table-td">{`${row.original.firstname} ${row.original.lastname}`}</td>
+               
                 <td className="table-td">{row.original.email}</td>
                 <td className="table-td">{row.original.phone}</td>
                 <td className="table-td">

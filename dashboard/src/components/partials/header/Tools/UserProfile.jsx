@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "../../../../components/ui/Card";
+import { Icon } from "@iconify/react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -71,99 +72,75 @@ const UserProfile = ({ token }) => {
 
   return (
     <div>
-      <div className="flex justify-between flex-wrap items-center mb-6">
-        <h4 className="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4">
-          User Profile
-        </h4>
-      </div>
-      <Card>
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-6">
-            <Card>
-              <div className="bg-transparent">
-                <form className="space-y-3" onSubmit={onUpdate}>
-                  <div>
-                    <label htmlFor="userid" className="col-sm-2 col-form-label">
-                      <b>Doctor ID </b>
-                    </label>
-                    <input
-                      type="text"
-                      name="userid"
-                      className=" col-sm-10 py-2 "
-                      id="userid"
-                      placeholder="User ID"
-                      value={`: ${userData.userid}`}
-                      readOnly
-                    />
+      <div className="grid grid-cols-12 gap-6">
+        <div className="lg:col-span-12 col-span-12">
+          <Card title="User Info">
+            <div className="  flex justify-around">
+
+            <div className="flex space-x-3 rtl:space-x-reverse">
+                <div className="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                  <Icon icon="heroicons:user" />
+                </div>
+                <div className="flex-1">
+                  <div className="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                    UserID
                   </div>
-                  <div className="form-group">
-                    <label
-                      htmlFor="firstname"
-                      className="col-sm-2 col-form-label"
-                    >
-                      <b>First Name </b>
-                    </label>
-                    <input
-                      type="text"
-                      name="firstname"
-                      id="firstname"
-                      className=" col-sm-10 py-2"
-                      placeholder="First Name"
-                      value={`: ${userData.firstname}`}
-                      readOnly
-                    />
+                  <div className="text-base text-slate-600 dark:text-slate-50">
+                  {userData.userid || "N/A"}
                   </div>
-                  <div className="form-group">
-                    <label
-                      htmlFor="lastname"
-                      className="col-sm-2 col-form-label"
-                    >
-                      <b>Last Name </b>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastname"
-                      id="lastname"
-                      className=" col-sm-10 py-2"
-                      placeholder="Last Name"
-                      value={`: ${userData.lastname}`}
-                      readOnly
-                    />
-                  </div>
-                  <div className="form-group row">
-                    <label htmlFor="email" className="col-sm-2 col-form-label">
-                      <b>Email </b>
-                    </label>
-                    <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      className="col-sm-10 py-2"
-                      placeholder="Email"
-                      value={`: ${userData.email}`}
-                      readOnly
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone" className="col-sm-2 col-form-label">
-                      <b>Phone </b>
-                    </label>
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      className=" col-sm-10  py-2"
-                      placeholder="Phone"
-                      value={`: ${userData.phone}`}
-                      readOnly
-                    />
-                  </div>
-                </form>
+                </div>
               </div>
-            </Card>
-          </div>
+              <div className="flex space-x-3 rtl:space-x-reverse">
+                <div className="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                  <Icon icon="heroicons:users" />
+                </div>
+                <div className="flex-1">
+                  <div className="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                    Name
+                  </div>
+                  <div className="text-base text-slate-600 dark:text-slate-50">
+                    {`${userData.firstname} ${userData.lastname}` || "N/A"}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex space-x-3 rtl:space-x-reverse">
+                <div className="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                  <Icon icon="heroicons:envelope" />
+                </div>
+                <div className="flex-1">
+                  <div className="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                    Email
+                  </div>
+                  <a
+                    href="mailto:someone@example.com"
+                    className="text-base text-slate-600 dark:text-slate-50"
+                  >
+                    {userData.email || "N/A"}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex space-x-3 rtl:space-x-reverse">
+                <div className="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                  <Icon icon="heroicons:phone-arrow-up-right" />
+                </div>
+                <div className="flex-1">
+                  <div className="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                    PHONE
+                  </div>
+                  <a
+                    href="tel:0189749676767"
+                    className="text-base text-slate-600 dark:text-slate-50"
+                  >
+                    {userData.phone || "N/A"}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
