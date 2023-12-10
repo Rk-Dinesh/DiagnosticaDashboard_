@@ -5,7 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { jwtDecode } from "jwt-decode";
-import MobileLogo from "../../assets/logo1.png";
+import MobileLogo from "../../assets/logobg.png";
+import MobileLogo1 from "../../assets/26807.jpg";
 import { API } from "../../host";
 
 function Login({ setToken }) {
@@ -42,11 +43,11 @@ function Login({ setToken }) {
     <div className="loginwrapper">
       <div className="lg-inner-column">
         <div className="right-column relative">
-          <div className="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
+          <div className="inner-content h-full flex flex-col bg-dark dark:bg-slate-800 " style={{ backgroundImage: `url(${MobileLogo1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="auth-box2 flex flex-col justify-center h-full">
               <div className="mobile-logo text-center mb-6 lg:hidden block"></div>
               <div className="d-flex justify-content-center align-items-center mb-3">
-                            <img src={MobileLogo} alt="" height='150px' width="150px" />
+                            <img src={MobileLogo} alt="" height='160px' width="160px" />
                         </div>
               <div className="text-center 2xl:mb-2 mb-1">
                 {/* <h4 className="font-medium mb-4">Diagnostica</h4> */}
