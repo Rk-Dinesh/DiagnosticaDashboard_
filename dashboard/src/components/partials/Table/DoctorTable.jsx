@@ -9,7 +9,7 @@ import {
   usePagination,
 } from "react-table";
 import GlobalFilter from "./GlobalFilter";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { API } from "../../../host";
 
 const COLUMNS = [
@@ -42,6 +42,7 @@ const COLUMNS = [
 const DoctorTable = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -69,7 +70,7 @@ const DoctorTable = () => {
     try {
       const response = await axios.delete(`${API}/deletedoctor?idcode=${idcode}`);
       console.log(response);
-      window.location.reload();
+      navigate('/dashboard');
     } catch (error) {
       console.error("Error deleting doctor:", error);
     }
