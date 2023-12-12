@@ -1736,5 +1736,3 @@ function Page7() {
 
     );
 }
-
-export default Page7
