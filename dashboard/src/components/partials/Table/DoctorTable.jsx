@@ -70,7 +70,7 @@ const DoctorTable = () => {
     try {
       const response = await axios.delete(`${API}/deletedoctor?idcode=${idcode}`);
       console.log(response);
-      navigate('/dashboard');
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting doctor:", error);
     }

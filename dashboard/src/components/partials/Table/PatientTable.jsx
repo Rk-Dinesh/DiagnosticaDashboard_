@@ -90,7 +90,7 @@ const PatientTable = () => {
             const response = await axios.delete(`${API}/${endpoint}?email=${email}`);
 
             if (response.status === 200) {
-                navigate('/dashboard')
+                window.location.reload()
             } else {
                 console.error(`Delete request for ${endpoint} failed with status:`, response.status);
             }
