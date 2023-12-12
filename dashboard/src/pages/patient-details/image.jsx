@@ -16,9 +16,17 @@ const items = [
 
 const Images = () => {
     const [Data, setData] = useState([]);
+    const [Range, setRange] = useState();
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const email = params.get("email");
+
+    const [hoveredImages, setHoveredImages] = useState({});
+
+   
+    const handleHover = (index, isHovered) => {
+      setHoveredImages({ ...hoveredImages, [index]: isHovered });
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +35,8 @@ const Images = () => {
                     const response = await axios.get(`${API}/getimage?email=${email}`);
                     setData(response.data);
                    // console.log(response.data)
+                   const range = await axios.get(`${API}/getpainrange?email=${email}`);
+                   setRange(range.data);
                 }
             } catch (error) {
                 console.error("Error fetching answers:", error);
@@ -47,7 +57,7 @@ const Images = () => {
                                     <div>
                                         <div className="accordion shadow-base dark:shadow-none rounded-md">
                                             <div className="flex justify-between cursor-pointer transition duration-150 font-medium w-full text-start text-base text-slate-600 dark:text-slate-300 px-8 py-4 bg-white dark:bg-slate-700  rounded-md">
-                                                <span>Patient Medical Dataset</span>
+                                                <span><b>Overll Painrange :</b> {Range?Range.painrange : 0}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +84,9 @@ const Images = () => {
                                                     className={`grid grid-cols-12 cursor-pointer transition duration-150 font-medium w-full text-start text-base text-slate-600 dark:text-slate-300 px-8 py-4 bg-white dark:bg-slate-700 rounded-md`}
                                                 >
                                                     <span className="col-span-1">{dataIndex + 1}</span>
-                                                    <span className="col-span-5"> <img src={`${API}/images/${dataItem["img"]}`} alt=""  style={{ height: '300px', width: '300px' }}></img> </span>
+                                                    <span className="col-span-5 zoomable-image-container" onMouseEnter={() => handleHover(dataIndex, true)} 
+                      onMouseLeave={() => handleHover(dataIndex, false)}> <img className="zoomable-image" src={`${API}/images/${dataItem["img"]}`} alt=""   style={{ height: '250px', width: '250px',   transform: hoveredImages[dataIndex] ? 'scale(1.4)' : 'scale(1)',
+                      transition: 'transform 0.1s ease-in-out' }}></img> </span>
                                                     <span className="col-span-3">{dataItem["painrange"]}</span>
 
                                                     <span> {dataItem["comment"]}</span>

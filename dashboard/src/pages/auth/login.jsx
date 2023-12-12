@@ -43,11 +43,11 @@ function Login({ setToken }) {
     <div className="loginwrapper">
       <div className="lg-inner-column">
         <div className="right-column relative">
-          <div className="inner-content h-full flex flex-col bg-dark dark:bg-slate-800 " style={{ backgroundImage: `url(${MobileLogo1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="inner-content h-full flex flex-col bg-dark dark:bg-slate-800  " style={{ backgroundImage: `url(${MobileLogo1})`, backgroundSize: 'cover', backgroundPosition: 'center' , opacity: 2.0 }}>
             <div className="auth-box2 flex flex-col justify-center h-full">
               <div className="mobile-logo text-center mb-6 lg:hidden block"></div>
               <div className="d-flex justify-content-center align-items-center mb-3">
-                            <img src={MobileLogo} alt="" height='160px' width="160px" />
+                            <img src={MobileLogo} alt="" height='300px' width="300px" />
                         </div>
               <div className="text-center 2xl:mb-2 mb-1">
                 {/* <h4 className="font-medium mb-4">Diagnostica</h4> */}

@@ -88,6 +88,18 @@ const Patient_Details = () => {
                                     <p style={{ width: '80px', textAlign: 'left', marginRight: '10px',fontWeight : 'bold' }}>Postcode </p>
                                     <p>: {Data.postcode}</p>
                                 </div>
+                                <div style={{ display: 'flex' }}>
+                                    <p style={{ width: '80px', textAlign: 'left', marginRight: '10px',fontWeight : 'bold' }}>Height </p>
+                                    <p>: {Data.height}</p>
+                                </div>
+                                <div style={{ display: 'flex' }}>
+                                    <p style={{ width: '80px', textAlign: 'left', marginRight: '10px',fontWeight : 'bold' }}>Weight </p>
+                                    <p>: {Data.weight}</p>
+                                </div>
+                                <div style={{ display: 'flex' }}>
+                                    <p style={{ width: '80px', textAlign: 'left', marginRight: '10px',fontWeight : 'bold' }}>BMI</p>
+                                    <p>: {Data.bmi}</p>
+                                </div>
                             </div>
                         </Card>
                     </div>
@@ -97,8 +109,8 @@ const Patient_Details = () => {
                                 <Row className="mb-1" data={RowData} />
                                 <Row1 className="mb-1" data={RowData} />
                                 <Row2 className="mb-1" data={RowData} />
-                                <Row3 className="mb-1" data={RowData} />
-                                <Row8 className="mb-1" data={RowData} />
+                                {/* <Row3 className="mb-1" data={RowData} /> */}
+                                {/* <Row8 className="mb-1" data={RowData} /> */}
                                 <Row4 className="mb-1" data={RowData} />
                                 <Row5 className="mb-1" data={RowData} />
                                 <Row6 className="mb-1" data={RowData} />

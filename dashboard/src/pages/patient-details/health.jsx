@@ -74,7 +74,7 @@ const EQ5D = () => {
                                     <div>
                                         <div className="accordion shadow-base dark:shadow-none rounded-md">
                                             <div className="flex justify-between cursor-pointer transition duration-150 font-medium w-full text-start text-base text-slate-600 dark:text-slate-300 px-8 py-4 bg-white dark:bg-slate-700  rounded-md">
-                                                <span>Patient Medical Dataset</span>
+                                                <span>EQ-5D</span>
                                             </div>
                                         </div>
                                     </div>

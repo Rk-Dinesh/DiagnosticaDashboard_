@@ -46,59 +46,17 @@ function Page7() {
     };
 
 
+    const handleNext = () => {
+        const Newvalue = `${defaultValue} ${NewDefaultValue}`
+       
+        const updatedURL = `/step9?defaultValue=${Newvalue} &email=${email}`;
 
-    const handleSubmit = async () => {
-        const requestData = {
-            data: `${defaultValue} ${NewDefaultValue}`,
-            email: email,
-        };
-        console.log(requestData)
-
-        try {
-            const response = await axios.post(`${API}/data`, requestData);
-            console.log(response.data);
-
-            if (response.status === 200) {
-                window.close();
-            } else {
-                console.log("Server returned a non-200 status code.");
-            }
-        } catch (error) {
-            console.error("Error in post:", error);
-            if (error.response) {
-                console.error("Response data:", error.response.data);
-            }
-        }
+        navigate(updatedURL);
     };
 
-    const handleGenerate = async () => {
-        const requestData = {
-            data: `${defaultValue} ${NewDefaultValue}`,
-            email: email,
-        };
-        console.log(requestData)
+   
 
-        try {
-            const response = await axios.post(`${API}/data`, requestData);
-            console.log(response.data);
-            if (response.status === 200) {
-                window.close();
-                window.open(`step1?email=${email}`)
-            } else {
-                console.log("Server returned a non-200 status code.");
-            }
-
-        } catch (error) {
-            console.error("Error in post:", error);
-            if (error.response) {
-                console.error("Response data:", error.response.data);
-            }
-        }
-    };
-
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+  
 
     const buttons = [
         {
@@ -109,13 +67,10 @@ function Page7() {
             title: "Back",
             onClick: handleBack
         },
+       
         {
-            title: "Genterate One",
-            onClick: handleGenerate
-        },
-        {
-            title: "Submit",
-            onClick: handleSubmit
+            title: "Next",
+            onClick: handleNext
         },
 
 
@@ -147,7 +102,7 @@ function Page7() {
                 </div>
 
                 <div className="space-y-10 px-8 py-8">
-                    <p><b>STEP 9:</b> If the Patient has surgery, then
+                    <p><b>STEP 7:</b> If the Patient has surgery, then
                         American Society of Anaesthesiologists
                         (ASA) Classifications can be added.</p>
                     <Select

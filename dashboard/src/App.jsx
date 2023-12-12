@@ -25,6 +25,7 @@ import UserProfile from "./components/partials/header/Tools/UserProfile";
 import FogotPassword from "./pages/auth/forgotpassword";
 import OtpVerify from "./pages/auth/otpverification";
 import ResetPassword from "./pages/auth/changepassword";
+import Page8 from "./pages/components/Page8";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -49,10 +50,11 @@ function App() {
           <Route path="step2" element={<Page1/>} />
           <Route path="step3" element={<Page2/>} />
           <Route path="step4" element={<Page3/>} />
-          <Route path="step5" element={<Page4/>} />
+          {/* <Route path="step5" element={<Page4/>} /> */}
           <Route path="step6" element={<Page5/>} />
           <Route path="step7" element={<Page6/>} />
           <Route path="step8" element={<Page7/>} />
+          <Route path="step9" element={<Page8/>} />
         </Route>
       </Routes>
     </div>

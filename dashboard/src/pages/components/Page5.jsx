@@ -234,8 +234,7 @@ function Page5() {
                 </div>
 
                 <div className="space-y-10 px-8 py-8">
-                    <p><b>STEP 6:</b> We assign letters for the individual conditions (Pathology),<b> AND</b></p>
-                    <p><b>STEP 7:</b>  The Diagnostica code would be further extended with a description of
+                    <p><b>STEP 5:</b> We assign letters for the individual conditions (Pathology),<b> AND</b> The Diagnostica code would be further extended with a description of
                         the condition.</p>
                 </div>
 

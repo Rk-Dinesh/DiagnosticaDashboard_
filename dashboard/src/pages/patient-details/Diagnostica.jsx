@@ -82,16 +82,18 @@ function Diagnostica() {
 
       {Data.length > 0 && (
         <div>
-          <div className='flex  gap-7'>
+         <div className='flex gap-7'>
+  <p><b>Data from the API:</b></p>
 
-            <p><b>Data from the API:</b></p>
-
-            <ul>
-              {Data.map((item, index) => (
-                <li key={index}>{item.data}</li>
-              ))}
-            </ul>
-          </div>
+  <ul>
+    {Data.map((item, index) => (
+      <li key={index}>
+        <p><b>Data:</b> {item.data}</p>
+        <p><b>Comment:</b> {item.comment}</p>
+      </li>
+    ))}
+  </ul>
+</div>
 
           <div>
             <div className='grid grid-cols-12 gap-6 py-5'>
@@ -235,18 +237,19 @@ function Diagnostica() {
                
               </div>
               
-              <div className='col-span-3'>
+              {/* <div className='col-span-3'>
                 <p style={stepStyles} className='mb-2'>STEP 5 :</p>
                 <div className='flex'><p style={flexContainerStyles1}>1 </p><p style={flexContainerStyles}>: 1-Forefoot</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>2 </p><p style={flexContainerStyles}>: 2-Midfoot</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>3 </p><p style={flexContainerStyles}>: 3-Hindfoot</p></div>
                 <div className='flex'><p style={flexContainerStyles1}>4 </p><p style={flexContainerStyles}>: 4-Ankle</p></div>
-              </div>
+              </div> */}
+
               </div>
 
               <div className='grid grid-cols-12 gap-6 py-4'>
               <div className='col-span-12'>
-                <p style={stepStyles} className='mb-2'>STEP : 6 & 7</p>
+                <p style={stepStyles} className='mb-2'>STEP : 5</p>
                 <div className='flex justify-between'>
                   <div >
                   <p style={stepStyles} className='mb-2'>Fracture :</p>
@@ -362,7 +365,7 @@ function Diagnostica() {
             </div>
 
             <div className='py-4'>
-              <p style={stepStyles} >STEP : 8</p>
+              <p style={stepStyles} >STEP : 6</p>
               <div className='grid grid-cols-12 gap-6 py-2'>
 
                 <div className='col-span-4'>
@@ -403,7 +406,7 @@ function Diagnostica() {
 
             <div>
               <div>
-                <p style={stepStyles} className='mb-2'>STEP : 9</p>
+                <p style={stepStyles} className='mb-2'>STEP : 7</p>
                 <div className='flex'><p style={flexContainerStyles}>ASA1</p><p style={flexContainerStyles}> : ASA 1 – Normal healthy patient</p></div>
                 <div className='flex'><p style={flexContainerStyles}>ASA2</p><p style={flexContainerStyles}> : ASA 2 – Patient with mild systemic disease</p></div>
                 <div className='flex'><p style={flexContainerStyles}>ASA3</p><p style={flexContainerStyles}> : ASA 3 – Patient with severe systemic disease</p></div>

@@ -173,7 +173,7 @@ function Page6() {
                 </div>
 
                 <div className="space-y-10 px-8 py-8">
-                    <p><b>STEP 8:</b>  The Diagnostica code can be extended to account for comorbidity
+                    <p><b>STEP 6:</b>  The Diagnostica code can be extended to account for comorbidity
                         descriptors. We can use Charlson Comorbidity Index (CCI) as the added descriptor.</p>
                 </div>
                 <div className='grid grid-cols-3 gap-6'>
