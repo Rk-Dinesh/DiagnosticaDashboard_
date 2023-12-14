@@ -11,6 +11,10 @@ import {
 import GlobalFilter from "./GlobalFilter";
 import { Link , useNavigate} from "react-router-dom";
 import { API } from "../../../host";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import autoTable from "jspdf-autotable";
+
 
 const COLUMNS = [
   {
@@ -43,6 +47,8 @@ const DoctorTable = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [allData, setAllData] = useState([]);
+  
 
   useEffect(() => {
     fetchData();
@@ -58,6 +64,7 @@ const DoctorTable = () => {
           rowIndex: index + 1,
         }));
         setData(usersWithRowIndex);
+        setAllData(usersWithRowIndex);
       }
       setLoading(false);
     } catch (error) {
@@ -75,7 +82,6 @@ const DoctorTable = () => {
       console.error("Error deleting doctor:", error);
     }
   };
-
 
   const tableInstance = useTable(
     {
@@ -109,6 +115,74 @@ const DoctorTable = () => {
 
   const { globalFilter, pageIndex, pageSize } = state;
 
+
+  const exportData = async(format) => {
+    if (format === 'csv') {
+      // CSV Export
+      const exportedData = allData.map((row) => ({
+        'Row #': row.rowIndex,
+        'First Name': row.firstname,
+        'Last Name': row.lastname,
+        'Email': row.email,
+        'Phone': row.phone,
+      }));
+
+      const csvData = [
+        Object.keys(exportedData[0]).join(','),
+        ...exportedData.map((row) => Object.values(row).join(',')),
+      ].join('\n');
+
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'Doctor_data.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (format === 'pdf') {
+      try {
+        const rowsPerPage = 30; 
+        const totalPages = Math.ceil(allData.length / rowsPerPage);
+        
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        let yOffset = 10;
+        
+        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+          const startIndex = (currentPage - 1) * rowsPerPage;
+          const endIndex = Math.min(startIndex + rowsPerPage, allData.length);
+          const currentPageData = allData.slice(startIndex, endIndex);
+          
+          const tableData = currentPageData.map((row) => [
+            row.rowIndex,
+            `${row.firstname} ${row.lastname}`,
+            row.email,
+            row.phone,
+          ]);
+    
+          pdf.text(`Page ${currentPage}`, 10, yOffset);
+          pdf.autoTable({
+            startY: yOffset + 10,
+            head: [['Row #', 'Name', 'Email', 'Phone']],
+            body: tableData,
+          });
+    
+          if (currentPage < totalPages) {
+            pdf.addPage();
+            yOffset = 10; // Set yOffset for the new page
+          } 
+        }
+    
+        pdf.save('Doctor_data.pdf');
+      } catch (error) {
+        console.error('Error exporting data:', error);
+      }
+    }
+    
+  };
+
   return (
     <>
       <div className="md:flex justify-between items-center mb-6">
@@ -135,7 +209,7 @@ const DoctorTable = () => {
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
       </div>
-      <table className="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+      <table   id="table-to-export" className="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
         <thead className="bg-slate-200 dark:bg-slate-700">
           <tr>
             <th className=" table-th " >#</th>
@@ -186,7 +260,20 @@ const DoctorTable = () => {
         </tbody>
       </table>
       <div className="md:flex md:space-y-0 space-y-5 justify-between mt-6 items-center">
-        <div className=" flex items-center space-x-3 rtl:space-x-reverse"></div>
+        <div className=" flex items-center space-x-3 rtl:space-x-reverse">
+          <button
+            onClick={() => exportData('pdf')}
+            className="bg-primary-600 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded"
+          >
+            Export PDF
+          </button>
+          <button
+            onClick={() => exportData('csv')}
+            className="bg-primary-600 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded"
+          >
+            Export CSV
+          </button>
+        </div>
         <ul className="flex items-center space-x-3 rtl:space-x-reverse">
           <li className="text-xl leading-4 text-slate-900 dark:text-white rtl:rotate-180">
             <button

@@ -12,6 +12,9 @@ import {
 } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import { API } from "../../../host";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import autoTable from "jspdf-autotable";
 
 
 const COLUMNS = [
@@ -52,6 +55,7 @@ const PatientTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [allData, setAllData] = useState([]);
 
 
   useEffect(() => {
@@ -68,6 +72,7 @@ const PatientTable = () => {
           rowIndex: index + 1,
         }));
         setData(usersWithRowIndex);
+        setAllData(usersWithRowIndex);
       }
       setLoading(false);
     } catch (error) {
@@ -132,6 +137,79 @@ const PatientTable = () => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+  const exportData = async(format) => {
+    if (format === 'csv') {
+      // CSV Export
+      const exportedData = allData.map((row) => ({
+        '#': row.rowIndex,
+        'Name': row.fname,
+        'Email': row.email,
+        'Phone': row.phone,
+        'DOB': row.dob,
+        'GENDER': row.gender,
+        'ADDRESS': row.address,
+      }));
+
+      const csvData = [
+        Object.keys(exportedData[0]).join(','),
+        ...exportedData.map((row) => Object.values(row).join(',')),
+      ].join('\n');
+
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'Patient_data.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (format === 'pdf') {
+      try {
+        const rowsPerPage = 30; 
+        const totalPages = Math.ceil(allData.length / rowsPerPage);
+        
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        let yOffset = 10;
+        
+        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+          const startIndex = (currentPage - 1) * rowsPerPage;
+          const endIndex = Math.min(startIndex + rowsPerPage, allData.length);
+          const currentPageData = allData.slice(startIndex, endIndex);
+          
+          const tableData = currentPageData.map((row) => [
+            row.rowIndex,
+            row.fname,
+            row.email,
+            row.phone,
+            row.dob,
+            row.gender,
+            row.address
+          ]);
+    
+          pdf.text(`Page ${currentPage}`, 10, yOffset);
+          pdf.autoTable({
+            startY: yOffset + 10,
+            head: [['#', 'Name','Email', 'Phone','DOB','GENDER','ADDRESS']],
+            body: tableData,
+          });
+    
+          if (currentPage < totalPages) {
+            pdf.addPage();
+            yOffset = 10; // Set yOffset for the new page
+          } 
+        }
+    
+        pdf.save('Patient_data.pdf');
+      } catch (error) {
+        console.error('Error exporting data:', error);
+      }
+    }
+    
+  };
+
   return (
     <>
       <Card>
@@ -163,7 +241,7 @@ const PatientTable = () => {
         <thead className="bg-slate-200 dark:bg-slate-700">
           <tr>
             <th className=" table-th " >#</th>
-            <th className=" table-th " >CUSTOMER</th>
+            <th className=" table-th " >PATIENT</th>
             <th className=" table-th " >PHONE</th>
             <th className=" table-th " >EMAIL</th>
             <th className=" table-th " >DOB</th>
@@ -218,7 +296,20 @@ const PatientTable = () => {
         </tbody>
       </table>
         <div className="md:flex md:space-y-0 space-y-5 justify-between mt-6 items-center">
-          <div className=" flex items-center space-x-3 rtl:space-x-reverse"></div>
+          <div className=" flex items-center space-x-3 rtl:space-x-reverse">
+          <button
+            onClick={() => exportData('pdf')}
+            className="bg-primary-600 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded"
+          >
+            Export PDF
+          </button>
+          <button
+            onClick={() => exportData('csv')}
+            className="bg-primary-600 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded"
+          >
+            Export CSV
+          </button>
+          </div>
           <ul className="flex items-center  space-x-3  rtl:space-x-reverse">
             <li className="text-xl leading-4 text-slate-900 dark:text-white rtl:rotate-180">
               <button
