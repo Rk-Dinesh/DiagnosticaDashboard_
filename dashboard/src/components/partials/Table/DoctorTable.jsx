@@ -134,6 +134,7 @@ const DoctorTable = () => {
 
       const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
       const url = window.URL.createObjectURL(blob);
+      
 
       const link = document.createElement('a');
       link.setAttribute('href', url);
