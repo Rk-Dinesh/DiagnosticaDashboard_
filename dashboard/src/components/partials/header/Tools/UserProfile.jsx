@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../../../host";
 
-const UserProfile = ({ token }) => {
+const UserProfile = ({ token,Current_user }) => {
   const navigate = useNavigate();
   const decodedToken = jwtDecode(token);
 
@@ -27,6 +27,7 @@ const UserProfile = ({ token }) => {
   const [userData, setUserData] = useState(initialUserData);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [idcode, setIdCode] = useState("");
 
   useEffect(() => {
     const decodedEmail = decodedToken.email;
@@ -37,6 +38,10 @@ const UserProfile = ({ token }) => {
         );
         const responseData = response.data;
         setUserData(responseData);
+        if (responseData.idcode) {
+          setIdCode(responseData.idcode);
+          //console.log(idcode) 
+        }
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +49,10 @@ const UserProfile = ({ token }) => {
 
     fetchUserData();
   }, [decodedToken.email]);
+
+  let handleupdate = () => {
+    navigate(`/updateform?idcode=${idcode}`)
+  }
 
   const onUpdate = async (e) => {
     e.preventDefault();
@@ -76,8 +85,7 @@ const UserProfile = ({ token }) => {
         <div className="lg:col-span-12 col-span-12">
           <Card title="User Info">
             <div className="  flex justify-around">
-
-            <div className="flex space-x-3 rtl:space-x-reverse">
+              <div className="flex space-x-3 rtl:space-x-reverse">
                 <div className="flex-none text-2xl text-slate-600 dark:text-slate-300">
                   <Icon icon="heroicons:user" />
                 </div>
@@ -86,7 +94,7 @@ const UserProfile = ({ token }) => {
                     UserID
                   </div>
                   <div className="text-base text-slate-600 dark:text-slate-50">
-                  {userData.userid || "N/A"}
+                    {userData.userid || "N/A"}
                   </div>
                 </div>
               </div>
@@ -141,6 +149,12 @@ const UserProfile = ({ token }) => {
           </Card>
         </div>
       </div>
+      <br />
+      {Current_user === 'doctor' && (
+      <div className="ltr:text-right rtl:text-left">
+        <button className="btn btn-dark text-center"  onClick={() => handleupdate()}>Update Info</button>
+      </div>
+      )}
     </div>
   );
 };

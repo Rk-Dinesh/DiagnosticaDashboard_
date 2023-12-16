@@ -43,7 +43,7 @@ const COLUMNS = [
   },
 ];
 
-const DoctorTable = () => {
+const DoctorTable = ({Current_user}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -52,6 +52,7 @@ const DoctorTable = () => {
 
   useEffect(() => {
     fetchData();
+   // console.log(Current_user)
   }, []);
 
   const fetchData = async () => {
@@ -215,10 +216,11 @@ const DoctorTable = () => {
           <tr>
             <th className=" table-th " >#</th>
             <th className=" table-th " > NAME</th>
-           
             <th className=" table-th " >EMAIL</th>
             <th className=" table-th " >PHONE</th>
+            {Current_user === 'superadmin' && (
             <th className=" table-th " >ACTION</th>
+            )}
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
@@ -231,6 +233,7 @@ const DoctorTable = () => {
                
                 <td className="table-td">{row.original.email}</td>
                 <td className="table-td">{row.original.phone}</td>
+                {Current_user === 'superadmin' && (
                 <td className="table-td">
                   <div className="d-flex justify-around rtl-space-x-reverse">
                     <Tooltip content="Update" placement="top" arrow animation="shift-away">
@@ -255,6 +258,7 @@ const DoctorTable = () => {
                     </Tooltip>
                   </div>
                 </td>
+                 )}
               </tr>
             );
           })}

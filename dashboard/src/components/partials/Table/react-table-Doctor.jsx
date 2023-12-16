@@ -1,10 +1,10 @@
 import React from "react";
 import DoctorTable from "./DoctorTable";
 
-const DoctorDetails = () => {
+const DoctorDetails = ({Current_user}) => {
   return (
     <div >
-      <DoctorTable />
+      <DoctorTable Current_user={Current_user}/>
     </div>
   );
 };

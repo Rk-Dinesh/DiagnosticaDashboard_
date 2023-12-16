@@ -51,7 +51,7 @@ const COLUMNS = [
     accessor: "actions", 
   },
 ];
-const PatientTable = () => {
+const PatientTable = ({Current_user}) => {
   const columns = useMemo(() => COLUMNS, []);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -273,6 +273,7 @@ const PatientTable = () => {
               <Icon icon="heroicons:eye" />
             </button>
           </Tooltip>
+          {Current_user === 'superadmin' && (
                     <Tooltip
                       content="Delete"
                       placement="top"
@@ -288,6 +289,7 @@ const PatientTable = () => {
                         <Icon icon="heroicons:trash" />
                       </button>
                     </Tooltip>
+          )}
                   </div>
                 </td>
               </tr>

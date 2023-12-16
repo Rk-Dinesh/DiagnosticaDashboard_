@@ -1,2 +1,2 @@
 
-export const API = 'http://54.252.90.36:3003';
+export const API = 'http://localhost:3003';

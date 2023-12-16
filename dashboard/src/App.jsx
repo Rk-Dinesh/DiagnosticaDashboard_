@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
+import { API } from "./host";
 
 import Dashboard from "./pages/dashboard";
 import Patient from "./pages/patient";
@@ -30,6 +33,30 @@ import Page8 from "./pages/components/Page8";
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
 
+  const decodedToken = jwtDecode(token);
+  const initialUserData = {role: ""};
+
+  const [userData, setUserData] = useState(initialUserData);
+  useEffect(() => {
+   
+    const decodedEmail = decodedToken.email;
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`${API}/getemail?email=${decodedEmail}`);
+        const responseData = response.data;
+        setUserData(responseData);
+       // console.log(responseData.role)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
+  }, [decodedToken.email]);
+
+
+  const Current_user = userData.role
+
   return (
     <div>
       <ToastContainer position="top-right" autoClose={1000}  />
@@ -40,12 +67,12 @@ function App() {
         <Route path="/resetpassword" element={<ResetPassword/>} />
         <Route path="/*" element={token ? <Layout token={token}/> : <Navigate to='/' />}>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="patient" element={<Patient />} />
-          <Route path="doctors" element={<Doctor />} />
+          <Route path="patient" element={<Patient Current_user ={Current_user}/>} />
+          <Route path="doctors" element={<Doctor Current_user ={Current_user}/>} />
           <Route path="view" element={<Viewpage />} />
           <Route path="form" element={<DoctorForm />} />
           <Route path="updateform" element={<UpdateForm />} />
-          <Route path="profile" element={<UserProfile token={token} />} />
+          <Route path="profile" element={<UserProfile token={token} Current_user ={Current_user} />} />
           <Route path="step1" element={<Page/>} />
           <Route path="step2" element={<Page1/>} />
           <Route path="step3" element={<Page2/>} />

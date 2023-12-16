@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Textinput from "../../components/ui/Textinput";
+import Select from "react-select";
 import Card from "../../components/ui/Card";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../host";
-
 
 const FormValidationSchema = yup
   .object({
@@ -18,15 +18,16 @@ const FormValidationSchema = yup
     phone: yup.string().required("Phone Number is required"),
     email: yup.string().required("Email is Required"),
     password: yup.string().required("Password is Required"),
-    profileImage: yup.mixed().test("fileType", "Invalid file format", (value) => {
-      if (!value) return true;
-      return ["image/jpeg", "image/png"].includes(value[0].type);
-    })
+    profileImage: yup
+      .mixed()
+      .test("fileType", "Invalid file format", (value) => {
+        if (!value) return true;
+        return ["image/jpeg", "image/png"].includes(value[0].type);
+      }),
   })
   .required();
 
 const Add_Board = () => {
-
   const {
     register,
     handleSubmit,
@@ -36,32 +37,41 @@ const Add_Board = () => {
   });
 
   const onSubmit = async (data) => {
-
-
-
     try {
-      const response = await axios.post(`${API}/doctor`, data);
-     // console.log(response.data);
+      const response = await axios.post(`${API}/doctor`, {
+        ...data,
+        role: selectedRole.value,
+      });
 
       if (response.status === 200) {
-        toast.success('User created successfully');
+        toast.success("User created successfully");
         history.back();
       }
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 409) {
-        toast.error('User already exists');
+        toast.error("User already exists");
       } else {
-        toast.error('User already exists');
+        toast.error("Error creating user");
       }
     }
   };
 
+  const styles = {
+    option: (provided, state) => ({
+      ...provided,
+      fontSize: "14px",
+    }),
+  };
+  const [selectedRole, setSelectedRole] = useState(null);
 
+  const role = [
+    { value: "superadmin", label: "Super Admin" },
+    { value: "doctor", label: "Doctor" },
+  ];
 
   return (
     <div>
-
       <div className="flex justify-between flex-wrap items-center mb-6">
         <h4 className="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4">
           New Doctor
@@ -72,11 +82,7 @@ const Add_Board = () => {
           <div className="col-md-6">
             <div className=" ">
               <Card>
-
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-
-                 
-
                   <Textinput
                     name="userid"
                     label="Doctor ID*"
@@ -112,6 +118,21 @@ const Add_Board = () => {
                     register={register}
                     error={errors.phone}
                   />
+                  <div>
+                    <label htmlFor=" hh2" className="form-label ">
+                      Role*
+                    </label>
+                    <Select
+                      options={role}
+                      value={selectedRole}
+                      onChange={(selectedOption) =>
+                        setSelectedRole(selectedOption)
+                      }
+                      placeholder="Select Role"
+                      id="hh2"
+                    />
+                  </div>
+
                   <Textinput
                     name="password"
                     label="Password*"
@@ -141,7 +162,6 @@ const Add_Board = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
